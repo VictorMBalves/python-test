@@ -19,13 +19,13 @@ def portScan(tgtHost, tgtPorts):
     try:
         tgtIP = gethostbyname(tgtHost)
     except:
-        print "Unknown Host %s" %tgtHost
+        print("Unknown Host %s" %tgtHost)
 
     try:
         tgtName = gethostbyaddr(tgtIP)
-        print '[+] Scan Results for: ' + tgtName[0]
+        print('[+] Scan Results for: ' + tgtName[0])
     except:
-        print '[+] Scan Results for: ' + tgtIP
+        print('[+] Scan Results for: ' + tgtIP)
     setdefaulttimeout(1)
     for tgtPort in tgtPorts:
         t = Thread(target=connScan, args=(tgtHost, int(tgtPort)))
@@ -39,7 +39,7 @@ def main():
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(',')
     if (tgtHost == None) | (tgtPorts[0] == None):
-        print parser.usage
+        print(parser.usage)
         exit(0)
     portScan(tgtHost, tgtPorts)
 
